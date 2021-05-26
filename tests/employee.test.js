@@ -20,6 +20,13 @@ describe('employee', () => {
   describe('employee', () =>{
     it('the getID() method should return the emplyee ID as an Integer', () => {
       const employeeTest = new employee("yuri", 11, 'ykitchin@gmail.com');
-      expect(employeeTest.getID()).toBeCalledWith(expect.any(Number))
+      expect(employeeTest.getID()).toEqual(expect.any(Number))
+    })
+  })
+
+  describe('employee', () =>{
+    it('the getEmail() method should return the emplyee email as a string', () => {
+      const employeeTest = new employee("yuri", 11, 'ykitchin@gmail.com');
+      expect(employeeTest.getEmail()).toEqual(expect.any(String))
     })
   })
