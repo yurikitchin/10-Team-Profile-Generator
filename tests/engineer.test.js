@@ -15,3 +15,9 @@ describe('engineer', () => {
      const engineerTest = new engineer("yuri", 11, 'ykitchin@gmail.com', "github");
      expect(engineerTest.getGithub()).toEqual(expect.any(String))
     });})
+
+    describe('engineer', () => {
+      it('getGithub method should retun a string containg "Engineer"', () => {
+       const engineerTest = new engineer("yuri", 11, 'ykitchin@gmail.com', "github");
+       expect(engineerTest.getRole()).toEqual("Engineer")
+      });})
