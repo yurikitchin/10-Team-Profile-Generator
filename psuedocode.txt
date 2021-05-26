@@ -1,0 +1,26 @@
+application starts 
+    - prompt to enter managers name(string), employee id(integer), email, office number
+    employee role = manager
+    - data is saved to a variable, which is then passed to a write function, that writes the HTML
+
+    -second prompt
+        -presented with a MENU(inquirer list)
+         add engineer, intern or finish building team 
+        -when engineer is selected
+            -prompt to enter engineers name(string), employee id(integer), email, github username
+            employee role = engineer
+                - data is saved to a variable, which is then passed to a write function, that writes the HTML
+
+            -sent back to MENU
+
+        -when intern is selected
+            -I am prompted to enter the intern’s name, ID, email, and school, and I am taken back to the menu
+                - data is saved to a variable, which is then passed to a write function, that writes the HTML
+            
+            -sent back to MENU
+            -on finish html variables are run through write function and page is written
+
+step 1 - set up classes Employee,Manage,Engineer,Intern
+step 2 - create function in index that runs inquirer prompts and save information
+step 3 - creat HTML template to be populated with inquirer information
+step 4 - create write function to pass prompt data to html template and save it
