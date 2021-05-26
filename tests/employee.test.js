@@ -20,6 +20,6 @@ describe('employee', () => {
   describe('employee', () =>{
     it('the getID() method should return the emplyee ID as an Integer', () => {
       const employeeTest = new employee("yuri", 11, 'ykitchin@gmail.com');
-      expect(employeeTest.getName()).toBeDefined()
+      expect(employeeTest.getID()).toBeCalledWith(expect.any(Number))
     })
   })
