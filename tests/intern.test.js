@@ -9,3 +9,15 @@ describe('intern', () => {
    expect(internTest.email).toEqual(expect.any(String))
    expect(internTest.school).toEqual(expect.any(String))
   });})
+
+  describe('intern', () => {
+    it('getSchool method should return a string', () => {
+     const internTest = new intern("yuri", 11, 'ykitchin@gmail.com', "school");
+     expect(internTest.getSchool()).toEqual(expect.any(String))
+    });})
+
+    describe('intern', () => {
+        it('getRole method should return "Intern"', () => {
+         const internTest = new intern("yuri", 11, 'ykitchin@gmail.com', "school");
+         expect(internTest.getRole()).toEqual("Intern"))
+        });})
