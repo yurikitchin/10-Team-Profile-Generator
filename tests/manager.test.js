@@ -13,7 +13,7 @@ describe('manager', () => {
     describe('manager', () => {
       it('officeNum method should return a number', () => {
       const managerTest = new manager("yuri", 11, 'ykitchin@gmail.com', 1);
-      expect(managerTest.officeNum()).toEqual(expect.any(Number))
+      expect(managerTest.officeNumer()).toEqual(expect.any(Number))
     });})
 
     describe('manager', () => {
