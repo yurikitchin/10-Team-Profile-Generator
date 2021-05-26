@@ -43,3 +43,13 @@ const internQuestions = [
         name: "school"
     }
 ]
+//add fuction to initilize and ask user first set of questions
+
+function run() {
+    inqurier.prompt(employeeQuestions, managerQuestions).then((data) => {
+        console.log("this works")
+        console.log(data)
+    }
+    )}
+
+run()
