@@ -7,4 +7,5 @@ describe('employee', () => {
    const employeeTest = new employee("yuri", 11, 'ykitchin@gmail.com');
    expect(employeeTest.name).toEqual(expect.any(String))
    expect(employeeTest.id).toEqual(expect.any(Number))
+   expect(employeeTest.email).toEqual(expect.any(String))
   });})
