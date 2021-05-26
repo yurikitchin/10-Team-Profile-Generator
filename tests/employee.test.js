@@ -34,6 +34,6 @@ describe('employee', () => {
   describe('employee', () =>{
     it('the getRole() method should return the emplyee as a string', () => {
       const employeeTest = new employee("yuri", 11, 'ykitchin@gmail.com');
-      expect(employeeTest.getRole()).toEqual(expect.any(String))
+      expect(employeeTest.getRole()).toEqual("Employee")
     })
   })
