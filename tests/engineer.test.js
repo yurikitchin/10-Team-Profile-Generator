@@ -9,3 +9,9 @@ describe('engineer', () => {
    expect(engineerTest.email).toEqual(expect.any(String))
    expect(engineerTest.github).toEqual(expect.any(String))
   });})
+
+  describe('engineer', () => {
+    it('getGithub method should retun a string containg users github username', () => {
+     const engineerTest = new engineer("yuri", 11, 'ykitchin@gmail.com', "github");
+     expect(engineerTest.getGithub()).toEqual(expect.any(String))
+    });})
