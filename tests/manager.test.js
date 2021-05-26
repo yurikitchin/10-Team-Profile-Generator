@@ -9,3 +9,15 @@ describe('manager', () => {
      expect(managerTest.email).toEqual(expect.any(String))
      expect(managerTest.officeNum).toEqual(expect.any(Number))
     });})
+
+    describe('manager', () => {
+      it('officeNum method should return a number', () => {
+      const managerTest = new manager("yuri", 11, 'ykitchin@gmail.com', 1);
+      expect(managerTest.officeNum()).toEqual(expect.any(Number))
+    });})
+
+    describe('manager', () => {
+        it('getRole method should return a "Manager"', () => {
+        const managerTest = new manager("yuri", 11, 'ykitchin@gmail.com', 1);
+        expect(managerTest.getRole()).toEqual("Manager")
+      });})
