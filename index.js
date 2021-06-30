@@ -11,42 +11,8 @@ const employee = require('./lib/employee')
 
 const newTeam = []
 
-const managerQuestions = () => {
-    inqurier.prompt([
-        {
-            type: "input",
-            message: "please enter Managers's name",
-            name: "name",
-
-        },
-        {
-            type: "input",
-            message: "please enter your office number",
-            name: "officeNum"
-        },
-        {
-            type: "input",
-            message: "Please enter employee ID",
-            name: "employeeID"
-        },
-        {
-            type: "input",
-            message: "please employee email",
-            name: "email"
-        }
-    ])
-        .then(managerData => {
-            const {name, officeNum, employeeID, email} = managerData;
-            const managerInfo = new manager (name, officeNum, employeeID, email)
-            console.log("this works")
-            console.log(managerInfo)
-        })
-
-}
-
-
 const addEmployees = () => {
-    inquirer.prompt([
+   return inquirer.prompt([
         {
             type: "list",
             name: "role",
@@ -121,6 +87,42 @@ const addEmployees = () => {
 
 
 }
+
+const managerQuestions = () => {
+   return inqurier.prompt([
+        {
+            type: "input",
+            message: "please enter Managers's name",
+            name: "name",
+
+        },
+        {
+            type: "input",
+            message: "please enter your office number",
+            name: "officeNum"
+        },
+        {
+            type: "input",
+            message: "Please enter employee ID",
+            name: "employeeID"
+        },
+        {
+            type: "input",
+            message: "please employee email",
+            name: "email"
+        }
+    ])
+        .then(managerData => {
+            const managerInfo = new manager (managerData.name, managerData.officeNum, managerData.employeeID, managerData.email)
+            newTeam.push(managerInfo)
+            console.log("this works")
+            console.log(managerInfo)
+        })
+
+}
+
+
+
 
 //add fuction to initilize and ask user first set of questions
 
