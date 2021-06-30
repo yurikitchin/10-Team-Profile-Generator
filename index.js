@@ -1,16 +1,23 @@
 const inqurier = require('inquirer')
 const fs = require('fs')
 const Choices = require('inquirer/lib/objects/choices')
+const inquirer = require('inquirer')
 //add inqurier questions that take name, id, email, officeNum for office manager
+const manager = require('./lib/manager')
+const engineer = require('./lib/engineer')
+const intern = require('./lib/intern')
+const employee = require('./lib/employee')
 
+
+const newTeam = []
 
 const managerQuestions = () => {
-    inqurier.prompt ([
+    inqurier.prompt([
         {
             type: "input",
             message: "please enter Managers's name",
             name: "name",
-    
+
         },
         {
             type: "input",
@@ -28,79 +35,95 @@ const managerQuestions = () => {
             name: "email"
         }
     ])
-    .then(managerData => {
-        console.log("this works")
-        console.log(managerData)
-    })
-   
+        .then(managerData => {
+            const {name, officeNum, employeeID, email} = managerData;
+            const managerInfo = new manager (name, officeNum, employeeID, email)
+            console.log("this works")
+            console.log(managerInfo)
+        })
+
 }
 
-const engineerQuestions = [
-    {
-        type: "input",
-        message: "please enter Engineers's name",
-        name: "name",
 
-    },
-    {
-        type: "input",
-        message: "enter Engineers GitHub username",
-        name: "github"
-    },
+const addEmployees = () => {
+    inquirer.prompt([
+        {
+            type: "list",
+            name: "role",
+            message: "do you want to add another employee",
+            choices: ["Engineer", "Intern"],
 
-    {
-        type: "input",
-        message: "Please enter employee ID",
-        name: "employeeID"
-    },
-    {
-        type: "input",
-        message: "please employee email",
-        name: "email"
-    }
-]
 
-const internQuestions = [
-    {
-        type: "input",
-        message: "please enter Interns name",
-        name: "name",
+        },
+        {
+            type: "input",
+            name: "name",
+            message: "please enter Employee name",
 
-    },
-    {
-        type: "input",
-        message: "Please enter employee ID",
-        name: "employeeID"
-    },
-    {
-        type: "input",
-        message: "please employee email",
-        name: "email"
-    },
-    {
-        type: "input",
-        message: "enter interns school name",
-        name: "school"
-    }
-]
+        },
+        {
+            type: "input",
+            name: "employeeID",
+            message: "Please enter employee ID",
 
-const addMoreEmployees = [
-    {
-        type: "list",
-        message: "do you want to add another employee",
-        choices: ["Engineer", "Intern", "Finish"]
+        },
+        {
+            type: "input",
+            name: "email",
+            message: "please employee email",
 
-    }
-]
+        },
+        {
+            type: "input",
+            name: "school",
+            message: "enter interns school name",
+            when: function (answers) {
+                return answers.role === "Intern"
+            }
+
+        },
+        {
+            type: "input",
+            name: "github",
+            message: "enter Engineers GitHub username",
+            when: function (answers) {
+                return answers.role === "Engineer"
+            }
+        },
+        {
+            type: "confirm",
+            name: "addEmployeePrompt",
+            message: "do you want to add another employee",
+            default: false
+        }
+
+    ])
+        .then(employeeData => {
+            let {name, employeeID, email, school, github, addEmployeePrompt} = employeeData;
+            let newEmployee;
+            if (employeeData.role === "Intern") {
+                newEmployee = new intern (name, employeeID, email, school)
+                console.log(newEmployee)
+            }
+            if (employeeData.role === "Engineer") {
+                newEmployee = new engineer (name, employeeID, email, github)
+                console.log(newEmployee)
+            }
+            newTeam.push(newEmployee);
+            if (addEmployeePrompt){
+                return addEmployees(newTeam)
+            } 
+            else {
+                console.log(newTeam)
+                return newTeam
+            }
+        })
+
+
+}
+
 //add fuction to initilize and ask user first set of questions
-function addMoreEmployeeClass() {
-    inqurier.prompt(addMoreEmployees).then((data) => {
 
-    })
 
-}
-
-function run() {
-  
-   }
-   managerQuestions()
+managerQuestions()
+   .then(addEmployees)

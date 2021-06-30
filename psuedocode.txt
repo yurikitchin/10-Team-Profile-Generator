@@ -1,8 +1,11 @@
 application starts 
+    -create add manage function
     - prompt to enter managers name(string), employee id(integer), email, office number
     employee role = manager
+    -import managee.js 
     - data is saved to a variable, which is then passed to a write function, that writes the HTML
 
+    -create add employee function
     -second prompt
         -presented with a MENU(inquirer list)
          add engineer, intern or finish building team 
