@@ -14,7 +14,7 @@ function genManagerCard(manager) {
             <h3>email:${manager.email}</h3>
             <h3>Eployee ID:${manager.employeeID}</h3>
             <h3>Office:${manager.officeNum}</h3>
-        </div>
+        </div><br>
     `;
 }
 
@@ -25,7 +25,7 @@ function genEngineerCard(engineer) {
     <h3>email:${engineer.email}</h3>
     <h3>employeeID:${engineer.employeeID}</h3>
     <h3>github:${engineer.github}</h3>
-</div>`;
+</div><br>`;
 }
 
 function genInternCard(intern) {
@@ -35,39 +35,39 @@ function genInternCard(intern) {
      <h3>email:${intern.email}</h3>
      <h3>employeeID:${intern.employeeID}</h3>
      <h3>github:${intern.school}</h3>
- </div>`;
+ </div><br>`;
 }
 let cardArray = []
 
 function createCards(newTeam) {
-  let htmlArray = [];
     for (let i = 0; i < newTeam.length; i++) {
         const newCard = newTeam[i]
-        const employeeRole = newCard.employeeRole;
-        if (employeeRole === "Manager")
+        console.log("this is new card", newCard)
+        const employeeRole = newCard.getRole();
+        console.log("this is employeeRole", employeeRole)
+        if (employeeRole === "Manager"){
       let newManager = genManagerCard(newCard);
+      console.log("newManager = ", newManager)
       cardArray.push(newManager)
-      break;
+        }
 
-    case "Engineer":
-      html = genEngineerCard();
-      cardArray.push(html)
-      break;
-
-    case "Intern":
-      html = genInternCard();
-      cardArray.push(html)
-      break;
+      if (employeeRole === "Engineer") {
+        let newEngineer = genEngineerCard(newCard);
+        console.log("newEngineer = ", newEngineer)
+        cardArray.push(newEngineer)
+      }
+      
+      if (employeeRole === "Intern") {
+        let newIntern = genInternCard(newCard);
+        console.log("newIntern = ", newIntern)
+        cardArray.push(newIntern)
+      }
+      
     
-    default:
-        console.error("Switch Error!")
-        break;
+      console.log(cardArray) 
   }};
-  console.log(cardArray)
 
 
-createCards()
-console.log(cardArray)
 
 const htmlBootstrap = `<!DOCTYPE html>
 <html lang="en">

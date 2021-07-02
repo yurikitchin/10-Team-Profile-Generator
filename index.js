@@ -66,24 +66,22 @@ const addEmployees = () => {
 
     ])
         .then(employeeData => {
-            let {name, employeeID, email, school, github, addEmployeePrompt} = employeeData;
+            let {name, employeeID, email, school, github, addEmployeePrompt, role} = employeeData;
             let newEmployee;
             if (employeeData.role === "Intern") {
-                newEmployee = new intern (name, employeeID, email, school)
-                console.log(newEmployee)
+                newEmployee = new intern (name, employeeID, email, school, role)
+                console.log(newEmployee.getRole)
             }
             if (employeeData.role === "Engineer") {
-                newEmployee = new engineer (name, employeeID, email, github)
-                console.log(newEmployee)
+                newEmployee = new engineer (name, employeeID, email, github, role)
+                console.log(newEmployee.getRole())
             }
             newTeam.push(newEmployee);
             if (addEmployeePrompt){
                 return addEmployees(newTeam)
             } 
             else {
-                console.log(newTeam)
-                return newTeam
-                .then(createCards)
+                return createCards(newTeam)
             }
         })
 
@@ -115,7 +113,7 @@ const managerQuestions = () => {
         }
     ])
         .then(managerData => {
-            const managerInfo = new manager (managerData.name, managerData.officeNum, managerData.employeeID, managerData.email)
+            const managerInfo = new manager (managerData.name, managerData.officeNum, managerData.employeeID, managerData.email, managerData.role)
             newTeam.push(managerInfo)
             console.log("this works")
             console.log(managerInfo)
