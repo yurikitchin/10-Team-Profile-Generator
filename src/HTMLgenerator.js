@@ -4,15 +4,16 @@
 //switch statement to getrole
 
 const employee = require("../lib/employee");
+let cardArray = []
 
 //custom card as per role
 function genManagerCard(manager) {
   return`
     <div>
             <h2>Manager</h2>
-            <h3Nname:${manager.name}</h3>
+            <h3>name:${manager.name}</h3>
             <h3>email:${manager.email}</h3>
-            <h3>Eployee ID:${manager.employeeID}</h3>
+            <h3>Eployee ID:${manager.id}</h3>
             <h3>Office:${manager.officeNum}</h3>
         </div><br>
     `;
@@ -23,7 +24,7 @@ function genEngineerCard(engineer) {
     <h2>Engineer</h2>
     <h3>name:${engineer.name}</h3>
     <h3>email:${engineer.email}</h3>
-    <h3>employeeID:${engineer.employeeID}</h3>
+    <h3>employeeID:${engineer.id}</h3>
     <h3>github:${engineer.github}</h3>
 </div><br>`;
 }
@@ -33,11 +34,11 @@ function genInternCard(intern) {
      <h2>Intern</h2>
      <h3>name:${intern.name}</h3>
      <h3>email:${intern.email}</h3>
-     <h3>employeeID:${intern.employeeID}</h3>
+     <h3>employeeID:${intern.id}</h3>
      <h3>github:${intern.school}</h3>
  </div><br>`;
 }
-let cardArray = []
+
 
 function createCards(newTeam) {
     for (let i = 0; i < newTeam.length; i++) {
@@ -64,12 +65,14 @@ function createCards(newTeam) {
       }
       
     
-      console.log(cardArray) 
+      console.log(cardArray)
+      console.log(htmlWrite(cardArray))
   }};
 
 
 
-const htmlBootstrap = `<!DOCTYPE html>
+  function htmlWrite(cardArray) {
+    return `<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -81,10 +84,10 @@ const htmlBootstrap = `<!DOCTYPE html>
 <main>
     <div>
         <!--Team Cards go here-->
-        ${createCards()}
+        ${cardArray}
     </div>
 </main>
 </body>
 </html>`;
-
+}
 module.exports = createCards
