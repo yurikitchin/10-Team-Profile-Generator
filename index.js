@@ -70,18 +70,18 @@ const addEmployees = () => {
             let newEmployee;
             if (employeeData.role === "Intern") {
                 newEmployee = new intern (name, employeeID, email, school, role)
-                console.log(newEmployee.getRole)
+                console.log(newEmployee.employeeID)
             }
             if (employeeData.role === "Engineer") {
                 newEmployee = new engineer (name, employeeID, email, github, role)
-                console.log(newEmployee.getRole())
+                console.log(newEmployee.employeeID)
             }
             newTeam.push(newEmployee);
             if (addEmployeePrompt){
                 return addEmployees(newTeam)
             } 
             else {
-                return createCards(newTeam)
+                return "done" //createCards(newTeam)
             }
         })
 
@@ -116,7 +116,7 @@ const managerQuestions = () => {
             const managerInfo = new manager (managerData.name, managerData.officeNum, managerData.employeeID, managerData.email, managerData.role)
             newTeam.push(managerInfo)
             console.log("this works")
-            console.log(managerInfo)
+            console.log(managerInfo.id)
         })
 
 }
