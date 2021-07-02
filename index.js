@@ -7,6 +7,7 @@ const manager = require('./lib/manager')
 const engineer = require('./lib/engineer')
 const intern = require('./lib/intern')
 const employee = require('./lib/employee')
+const createCards = require('./src/HTMLgenerator')
 
 
 const newTeam = []
@@ -82,6 +83,7 @@ const addEmployees = () => {
             else {
                 console.log(newTeam)
                 return newTeam
+                .then(createCards)
             }
         })
 
