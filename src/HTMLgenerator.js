@@ -10,8 +10,8 @@ let cardArray = [];
 //custom card as per role
 function genManagerCard(manager) {
   return`
-    <div>
-            <h2>Manager</h2>
+    <div class="manager">
+            <h2 id="manHead">Manager</h2>
             <h3>name:${manager.name}</h3>
             <h3>email:${manager.email}</h3>
             <h3>Eployee ID:${manager.id}</h3>
@@ -21,8 +21,8 @@ function genManagerCard(manager) {
 }
 
 function genEngineerCard(engineer) {
-  return` <div>
-    <h2>Engineer</h2>
+  return` <div class="engineer">
+    <h2 id="engHead">Engineer</h2>
     <h3>name:${engineer.name}</h3>
     <h3>email:${engineer.email}</h3>
     <h3>employeeID:${engineer.id}</h3>
@@ -31,8 +31,8 @@ function genEngineerCard(engineer) {
 }
 
 function genInternCard(intern) {
-  return ` <div>
-     <h2>Intern</h2>
+  return ` <div class="intern">
+     <h2 id="intHead">Intern</h2>
      <h3>name:${intern.name}</h3>
      <h3>email:${intern.email}</h3>
      <h3>employeeID:${intern.id}</h3>
