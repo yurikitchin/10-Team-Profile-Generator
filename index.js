@@ -8,6 +8,7 @@ const engineer = require('./lib/engineer')
 const intern = require('./lib/intern')
 const employee = require('./lib/employee')
 const createCards = require('./src/HTMLgenerator')
+const { createPromptModule } = require('inquirer')
 
 
 const newTeam = []
@@ -70,19 +71,21 @@ const addEmployees = () => {
             let newEmployee;
             if (employeeData.role === "Intern") {
                 newEmployee = new intern (name, employeeID, email, school, role)
-                console.log(newEmployee.employeeID)
+                
             }
             if (employeeData.role === "Engineer") {
                 newEmployee = new engineer (name, employeeID, email, github, role)
-                console.log(newEmployee.employeeID)
+                
             }
             newTeam.push(newEmployee);
             if (addEmployeePrompt){
                 return addEmployees(newTeam)
             } 
             else {
-                return "done" //createCards(newTeam)
+                console.log("This is the newTeam array index 85", newTeam)
+                return createCards(newTeam)
             }
+            
         })
 
 
@@ -115,11 +118,11 @@ const managerQuestions = () => {
         .then(managerData => {
             const managerInfo = new manager (managerData.name, managerData.officeNum, managerData.employeeID, managerData.email, managerData.role)
             newTeam.push(managerInfo)
-            console.log("this works")
-            console.log(managerInfo.id)
+        
         })
 
 }
+
 
 
 
